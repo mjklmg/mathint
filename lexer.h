@@ -5,7 +5,6 @@
 #include <stddef.h>
 typedef enum Token_Type {
 	UNKNOWN = 0,
-	EOI,
 	NUMBER,
 	PLUS,
 	MINUS,
@@ -20,19 +19,28 @@ typedef struct Token {
 	int value;
 } Token;
 
+typedef struct Tokens {
+    int token_count;
+    Token * array;
+} Tokens;
+
 typedef struct Lexer {
 	int cursor; // cursor position 0;n
 	const char* content; // string thats currently tokenized
 } Lexer;
 
+void print_token(Token* token);
+
+void print_tokens(Tokens *tokens);
+
 Token_Type set_literal_token_type(char c);
-
-Lexer *initLexer(int cursor, const char* str);
-
-void lexer_eat(Lexer *l);
 
 char* get_token_name(Token *token);
 
-Token *tokenize(Lexer *l);
+Lexer *initLexer(const char* input);
+
+void lexer_eat(Lexer *l);
+
+Tokens *tokenize(Lexer *l);
 
 #endif // LEXER_H
