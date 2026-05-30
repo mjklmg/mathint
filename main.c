@@ -3,7 +3,7 @@
 
 #include "lexer.h"
 
-const char * input ="2*(123+42)-5";
+const char * input ="   (  1+ 33)/  4";
 
 int main(void){
 	Lexer *l = initLexer(0, input);

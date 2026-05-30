@@ -29,6 +29,7 @@ Token_Type set_literal_token_type(char c);
 
 Lexer *initLexer(int cursor, const char* str);
 
+void lexer_eat(Lexer *l);
 
 char* get_token_name(Token *token);
 
